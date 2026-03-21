@@ -33,6 +33,7 @@
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             background-color: var(--bg-color); 
+            color: var(--text-color); /* Added this to ensure text flips */
             display: flex; 
             justify-content: center; 
             align-items: center; 
@@ -40,7 +41,7 @@
             margin: 0;
             padding: 20px;
             box-sizing: border-box;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         
         .menu-container { 
@@ -51,7 +52,7 @@
             width: 100%; 
             max-width: 400px; 
             text-align: center;
-            position: relative; /* For theme toggle positioning */
+            position: relative; 
             transition: background-color 0.3s ease;
         }
 
@@ -231,17 +232,15 @@
     </a>
 
     <div class="footer">
-        
         <span class="credit-text">Created by GESC Student</span>
     </div>
 </div>
 
 <script>
-    // --- Dark Mode Logic ---
-    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const toggleSwitch = document.querySelector('#checkbox');
     const currentTheme = localStorage.getItem('theme');
 
-    // Check for saved theme on load
+    // Apply the saved theme on load
     if (currentTheme) {
         document.documentElement.setAttribute('data-theme', currentTheme);
         if (currentTheme === 'dark') {
@@ -249,7 +248,7 @@
         }
     }
 
-    // Handle theme switching
+    // Toggle function
     function switchTheme(e) {
         if (e.target.checked) {
             document.documentElement.setAttribute('data-theme', 'dark');
@@ -259,11 +258,12 @@
             localStorage.setItem('theme', 'light');
         }    
     }
+
     toggleSwitch.addEventListener('change', switchTheme, false);
 
-    // --- Daily Quote Logic ---
     const quotes = [
         { cn: "加油!", py: "Jiāyóu! (Keep going!)" },
+         
         
     ];
 
@@ -274,7 +274,6 @@
         document.getElementById('quote-py').innerText = quote.py;
     }
 
-    // Set a quote immediately on load
     setRandomQuote();
 </script>
 
