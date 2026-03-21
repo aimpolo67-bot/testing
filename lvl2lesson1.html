@@ -6,6 +6,27 @@
     <title>Lesson 1: 爱好 (Àihào) - ဝါသနာ</title>
     
     <style>
+        
+        :root {
+            --bg: #f0f2f5;
+            --text: #2c3e50;
+            --card: white;
+            --subtitle: #7f8c8d;
+            --border: #eee;
+            --progress-sub-bg: #ecf0f1;
+            --btn-bg: white;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1a1a1a;
+            --text: #ecf0f1;
+            --card: #2d2d2d;
+            --subtitle: #bdc3c7;
+            --border: #444;
+            --progress-sub-bg: #333;
+            --btn-bg: #2d2d2d;
+        }
+
         body { 
             font-family: sans-serif; 
             background-color: #f0f2f5; 
@@ -160,6 +181,10 @@
     </div>
 
 <script>
+
+     if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
         const CONFIG = {
     title: "Level 2 Lesson 1: 爱好 (Àihào) - ဝါသနာ",
     vocab: [
